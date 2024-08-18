@@ -1,26 +1,32 @@
 Local DNS Server IP
 -------------------
-<ip-here>
+
+127.0.0.53
 
 
 
 Default gateway IP
 -------------------
-<ip-here>
-
+10.0.0.1
 
 
 DHCP IP allocation sys-logs
 -------------------
-<logs-here>
-
-
+2024-08-06T19:10:26.006084+00:00 ip-10-0-0-194 dhcpcd[450]: dhcpcd-10.0.6 starting
+2024-08-06T19:10:26.006089+00:00 ip-10-0-0-194 dhcpcd[453]: DUID 00:01:00:01:2e:45:31:9a:0e:e4:b2:b1:25:75
+2024-08-06T19:10:26.006094+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: IAID b2:b1:25:75
+2024-08-06T19:10:26.006098+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: soliciting a DHCP lease
+2024-08-06T19:10:26.006106+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: offered 10.0.0.194 from 10.0.0.1
+2024-08-06T19:10:26.006111+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: leased 10.0.0.194 for 3600 seconds
+2024-08-06T19:10:26.006116+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: adding route to 10.0.0.0/24
+2024-08-06T19:10:26.006121+00:00 ip-10-0-0-194 dhcpcd[453]: ens5: adding default route via 10.0.0.1
+2024-08-06T19:10:26.006125+00:00 ip-10-0-0-194 dhcpcd[453]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only ens5
+2024-08-06T19:10:26.006296+00:00 ip-10-0-0-194 systemd-networkd[521]: ens5: DHCPv4 address 10.0.0.194/24, gateway 10.0.0.1 acquired from 10.0.0.1
 
 Public to private num of hops
 -------------------
-<answer-here>
-
+can't see
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+it does work because i have DNS but i do not have routes.
