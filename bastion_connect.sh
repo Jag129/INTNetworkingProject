@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Assign arguments to variables
 bsto="$1"
 rem="$2"

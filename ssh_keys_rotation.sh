@@ -48,3 +48,4 @@ mv $NEW_PUB_KEY $HOME/.ssh/id_rsa.pub
 
 echo "SSH key rotation completed without issues."
 
+
