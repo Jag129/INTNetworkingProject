@@ -1,4 +1,4 @@
-/'
+
 #!/bin/bash
 
 # Assign arguments to variables
@@ -35,7 +35,7 @@ if [ "$#" -eq 3 ]; then
       else
         exit 1
 fi
-'/
+/'
 #!/bin/bash
 
 # Assign arguments to variables
@@ -73,3 +73,4 @@ else
     echo "Incorrect usage."
     exit 5
 fi
+'/
