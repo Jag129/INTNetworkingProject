@@ -29,8 +29,8 @@ fi
 # case 3: run command in the private machine
 if [ "$#" -eq 3 ]; then
   echo "Command accepted,"
-      #ssh -i "$KEY_PATH" -o ProxyCommand="ssh -W %h:%p -i $KEY_PATH ubuntu@$bsto" ubuntu@$rem "$cmd"
-      ssh -t -i $KEY_PATH ubuntu@$bsto ssh -i $KEY_PATH ubuntu@$rem $cmd
+      ssh -i "$KEY_PATH" -o ProxyCommand="ssh -W %h:%p -i $KEY_PATH ubuntu@$bsto" ubuntu@$rem "$cmd"
+      #ssh -t -i $KEY_PATH ubuntu@$bsto ssh -i $KEY_PATH ubuntu@$rem "$cmd"
       else
         exit 1
 fi
