@@ -20,7 +20,7 @@ fi
 # Case 1: Connect to the private instance via the public instance
 if [ "$#" -eq 2 ]; then
     echo "Connecting to the private instance via the public instance..."
-    ssh -i "$KEY_PATH" -o ProxyCommand="ssh -W %h:%p -i $KEY_PATH ubuntu@$bsto" ubuntu@$rem
+    ssh -t -i "$KEY_PATH" ubuntu@$bsto ssh -i $remkey ubuntu@$rem
 # Case 2: Connect directly to the public instance
 elif [ "$#" -eq 1 ]; then
     echo "Connecting directly to the public instance..."
