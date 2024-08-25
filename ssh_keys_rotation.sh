@@ -30,12 +30,8 @@ fi
 
 # Remove the old key from authorized_keys on the private instance
 OLD_PUBLIC_KEY=$(cat $OLD_KEY_PATH.pub)
-grep -Ff $OLD_PUBLIC_KEY authorized_hosts
-grep -Fvxf $OLD_PUBLIC_KEY authorized_hosts > temp && mv temp authorized_hosts
-
-
-#ESCAPED_OLD_KEY=$(echo "$OLD_PUBLIC_KEY" | sed 's/[\/&]/\\&/g')
-#ssh -i "$NEW_KEY_PATH" ubuntu@$PRIVATE_IP "sed -i '/$ESCAPED_OLD_KEY/d' ~/.ssh/authorized_keys"
+ESCAPED_OLD_KEY=$(echo "$OLD_PUBLIC_KEY" | sed 's/[\/&]/\\&/g')
+ssh -i "$NEW_KEY_PATH" ubuntu@$PRIVATE_IP "sed -i '/$ESCAPED_OLD_KEY/d' ~/.ssh/authorized_keys"
 #ssh -i "$NEW_KEY_PATH" ubuntu@$PRIVATE_IP "grep -v '$OLD_PUBLIC_KEY' ~/.ssh/authorized_keys > ~/.ssh/authorized_keys.tmp && mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys"
 
 # Verify the old key no longer works
