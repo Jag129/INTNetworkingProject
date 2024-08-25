@@ -20,7 +20,7 @@ ssh-keygen -t rsa -b 4096 -f $newkey -N ""
 ssh -i $exkey ubuntu@$input 'cat >> $HOME/.ssh/authorized_hosts' < $newpub
 
 #Delete old Key
-local_key=$(cat /path/to/local/key.pub)
+local=$(cat $exkey.pub)
 
 ssh -i $exkey ubuntu@$input "
     sed -i \"/$exkey/d\" ~/.ssh/authorized_keys
