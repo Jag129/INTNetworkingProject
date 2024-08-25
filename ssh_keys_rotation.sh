@@ -16,6 +16,7 @@ OLD_KEY_PATH="$HOME/.ssh/id_rsa"
 ssh-keygen -t rsa -b 4096 -f $NEW_KEY_PATH -N ""
 chmod 600 $NEW_KEY_PATH
 
+
 # Copy the new public key to the authorized_keys on the private instance
 NEW_PUBLIC_KEY=$(cat $PUBLIC_KEY_PATH)
 ssh -i "$OLD_KEY_PATH" ubuntu@$PRIVATE_IP "echo '$NEW_PUBLIC_KEY' >> ~/.ssh/authorized_keys"
