@@ -13,7 +13,7 @@ if [ "$#" -lt 1 ]; then
 fi
 
 #Generate New Keys
-ssh-keygen -t rsa -b 4096 -f $newkey ""
+ssh-keygen -t rsa -b 4096 -f $NEW_KEY_PATH -N ""
 
 #ssh -i $exkey ubuntu@$input 'echo "$newpub" >> /home/ubuntu/.ssh/authorized_hosts'
 #Append the current key
