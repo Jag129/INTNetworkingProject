@@ -12,6 +12,7 @@ if [ "$#" -lt 1 ]; then
     exit 1
 fi
 
+
 #Generate New Keys
 ssh-keygen -t rsa -b 4096 -f $newkey -N ""
 
