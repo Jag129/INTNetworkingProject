@@ -42,6 +42,7 @@ if [ $? -eq 0 ]; then
 fi
 
 
+
 # Remove old key from the public instance
 rm -f $OLD_KEY_PATH $OLD_KEY_PATH.pub
 
