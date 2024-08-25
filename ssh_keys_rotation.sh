@@ -1,5 +1,25 @@
 #!/bin/bash
 
+exkey="/home/ubuntu/id_rsa"
+newkey="home/ubuntu/id_new"
+newpub="$newkey.pub"
+input="$1"
+
+
+# Check if correct number of arguments is provided
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <private-instance-ip>"
+    exit 1
+fi
+ssh-keygen -t rsa -b 4096 -f $newkey
+ssh -i $exkey ubuntu@$input 'echo "$newpub" >> /home/ubuntu/.ssh/authorized_hosts'
+ssh -i $exkey ubuntu@$input 'cat >> /home/ubuntu/.ssh/authorized_hosts' < $newpub
+
+
+
+
+
+<<comment
 # Ensure correct usage
 if [ $# -ne 1 ]; then
   echo "Usage: $0 <private-instance-ip>"
@@ -51,3 +71,5 @@ mv $NEW_KEY_PATH $HOME/.ssh/id_rsa
 mv $PUBLIC_KEY_PATH $HOME/.ssh/id_rsa.pub
 
 echo "SSH key rotation completed successfully."
+comment
+
