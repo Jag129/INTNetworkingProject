@@ -17,8 +17,9 @@ fi
 ssh-keygen -t rsa -b 4096 -f $newkey -N ""
 
 #ssh -i $exkey ubuntu@$input 'echo "$newpub" >> /home/ubuntu/.ssh/authorized_hosts'
+scp -i $exkey $newpub "ubuntu@$input:/home/ubuntu/"
 #Append the current key
-ssh -i $exkey ubuntu@$input 'cat >> $HOME/.ssh/authorized_hosts' < $newpub
+ssh -i $exkey ubuntu@$input "cat ~/.ssh/id_new.pub>> $HOME/.ssh/authorized_hosts"
 
 #Delete old Key
 local=$(cat $exkey.pub)
