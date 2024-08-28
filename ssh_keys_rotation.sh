@@ -12,6 +12,7 @@ NEW_SSH_KEY="$HOME/.ssh/new_rsa"
 NEW_PUB_KEY="${NEW_SSH_KEY}.pub"
 OLD_SSH_KEY="$HOME/.ssh/id_rsa"
 
+
 # Create a new SSH key pair
 ssh-keygen -t rsa -b 4096 -f $NEW_SSH_KEY -N ""
 chmod 600 $NEW_SSH_KEY
