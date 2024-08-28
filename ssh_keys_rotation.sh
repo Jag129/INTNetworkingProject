@@ -12,7 +12,6 @@ NEW_SSH_KEY="$HOME/.ssh/new_rsa"
 NEW_PUB_KEY="${NEW_SSH_KEY}.pub"
 OLD_SSH_KEY="$HOME/.ssh/id_rsa"
 
-
 # Create a new SSH key pair
 ssh-keygen -t rsa -b 4096 -f $NEW_SSH_KEY -N ""
 chmod 600 $NEW_SSH_KEY
@@ -36,7 +35,7 @@ ssh -i "$NEW_SSH_KEY" ubuntu@$TARGET_IP "sed -i '/$ESCAPED_OLD_PUB/d' ~/.ssh/aut
 # Confirm the old key no longer provides access
 ssh -i "$OLD_SSH_KEY" ubuntu@$TARGET_IP 'exit'
 if [ $? -eq 0 ]; then
-  echo "Warning: Old key still valid; should be removed."
+  echo "Warning: Old key still valid; expected it to be removed."
   exit 1
 fi
 
@@ -48,3 +47,4 @@ mv $NEW_SSH_KEY $HOME/.ssh/id_rsa
 mv $NEW_PUB_KEY $HOME/.ssh/id_rsa.pub
 
 echo "SSH key rotation completed without issues."
+
