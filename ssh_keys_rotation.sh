@@ -5,7 +5,6 @@ set -e
 if [ $# -ne 1 ]; then
   echo "Usage: $0 <private-instance-ip>"
   exit 1
-
 fi
 
 # Variables
