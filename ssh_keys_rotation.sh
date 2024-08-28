@@ -48,36 +48,3 @@ mv $NEW_SSH_KEY $HOME/.ssh/id_rsa
 mv $NEW_PUB_KEY $HOME/.ssh/id_rsa.pub
 
 echo "SSH key rotation completed without issues."
-
-<<comment
-#!/bin/bash
-
-exkey="$HOME/.ssh/id_rsa"
-newkey="$HOME/.ssh/id_new"
-newpub="$newkey.pub"
-input="$1"
-
-
-# Check if correct number of arguments is provided
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <private-instance-ip>"
-    exit 1
-fi
-
-
-#Generate New Keys
-ssh-keygen -t rsa -b 4096 -f $newkey -N ""
-
-#ssh -i $exkey ubuntu@$input 'echo "$newpub" >> /home/ubuntu/.ssh/authorized_hosts'
-scp -i $exkey $newpub "ubuntu@$input:/home/ubuntu/"
-scp -i $exkey ubuntu@$input "ls ~/.ssh"
-#Append the current key
-ssh -i $exkey ubuntu@$input "cat ~/.ssh/id_new.pub>> $HOME/.ssh/authorized_keys"
-
-#Delete old Key
-local=$(cat $exkey.pub)
-
-ssh -i $exkey ubuntu@$input "
-    sed -i \"/$exkey/d\" ~/.ssh/authorized_keys
-"
-comment
