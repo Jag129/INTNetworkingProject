@@ -36,7 +36,7 @@ ssh -i "$NEW_SSH_KEY" ubuntu@$TARGET_IP "sed -i '/$ESCAPED_OLD_PUB/d' ~/.ssh/aut
 # Confirm the old key no longer provides access
 ssh -i "$OLD_SSH_KEY" ubuntu@$TARGET_IP 'exit'
 if [ $? -eq 0 ]; then
-  echo "Warning: Old key still valid; expected it to be removed."
+  echo "Warning: Old key still valid; should be removed."
   exit 1
 fi
 
